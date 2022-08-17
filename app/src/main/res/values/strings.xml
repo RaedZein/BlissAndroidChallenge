@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Bliss Challenge</string>
+    <!-- Home strings-->
+    <string name="home_button_random_emoji">Random Emoji</string>
+    <string name="home_button_emoji_list">Emoji List</string>
+    <string name="home_hint_insert_github_username">Insert Github Username</string>
+    <string name="home_button_avatar_list">Avatar List</string>
+    <string name="home_button_repos">Google Repos</string>
+
 </resources>
