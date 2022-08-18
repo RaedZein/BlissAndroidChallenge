@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/image_view_emoji"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="4dp"
@@ -29,7 +29,7 @@
         app:layout_constraintBottom_toTopOf="@+id/cardViewCategoryEmojis"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/image_view_emoji"
         app:layout_constraintVertical_bias="0.0" />
 
 
@@ -211,9 +211,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:padding="35dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView" />
+        app:layout_constraintBottom_toBottomOf="@+id/image_view_emoji"
+        app:layout_constraintEnd_toEndOf="@+id/image_view_emoji"
+        app:layout_constraintStart_toStartOf="@+id/image_view_emoji"
+        app:layout_constraintTop_toTopOf="@+id/image_view_emoji" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
