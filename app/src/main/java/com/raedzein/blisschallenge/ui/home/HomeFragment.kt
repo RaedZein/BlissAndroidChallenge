@@ -56,6 +56,11 @@ class HomeFragment : ViewBindingFragment<FragmentHomeBinding>(),CustomSearchBar.
                 HomeFragmentDirections.actionHomeFragmentToAvatarListFragment()
             )
         }
+        binding.cardViewRepos.setOnClickListener {
+            findNavController().navigate(
+                HomeFragmentDirections.actionHomeFragmentToRepoListFragment()
+            )
+        }
         sheetView.searchBar.setSearchListener(this)
         sheetView.searchBar.setQueryText(homeViewModel.getUserNameText())
 

@@ -6,7 +6,9 @@ import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import com.raedzein.blisschallenge.BuildConfig
+import com.raedzein.blisschallenge.data.api.GitReposQueryBuilder
 import com.raedzein.blisschallenge.data.api.GithubApiService
+import com.raedzein.blisschallenge.data.api.GoogleReposQueryBuilder
 import com.raedzein.blisschallenge.data.deserializer.EmojiTypeAdapter
 import com.raedzein.blisschallenge.domain.model.Emoji
 import com.raedzein.blisschallenge.domain.model.EmojiListResponse
@@ -57,4 +59,6 @@ class RemoteApiModule {
         return providesRetrofit(appContext).create(GithubApiService::class.java)
     }
 
+    @Provides
+    fun providesGoogleReposQueryBuilder():GitReposQueryBuilder = GoogleReposQueryBuilder()
 }

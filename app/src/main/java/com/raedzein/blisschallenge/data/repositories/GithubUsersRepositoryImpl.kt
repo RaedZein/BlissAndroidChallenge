@@ -21,5 +21,5 @@ class GithubUsersRepositoryImpl @Inject constructor(
 
     override fun getGithubUsersFromDbLiveData() = database.githubUserDao().getAllLiveData()
 
-    override suspend fun deleteGithubUserFromDb(user: GithubUser) = database.githubUserDao().delete(user.id)
+    override suspend fun deleteGithubUserFromDb(user: GithubUser) = database.githubUserDao().delete(user.userId)
 }

@@ -29,4 +29,16 @@
         <item name="boxStrokeWidth">0.5dp</item>
         <item name="hintEnabled">false</item>
     </style>
+    <style name="MinorTextStyle" parent="TextAppearance.AppCompat.Body2">
+        <item name="android:textColor">@android:color/darker_gray</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TitleTextStyle" parent="TextAppearance.AppCompat.Title">
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
 </resources>

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardView"
+    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:foreground="?selectableItemBackground"
+    android:layout_marginHorizontal="8dp"
+    app:cardBackgroundColor="@color/white"
+    app:cardCornerRadius="20dp"
+    app:strokeColor="@color/cardview_dark_background"
+    app:strokeWidth="0.5dp"
+    app:cardElevation="0dp">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?selectableItemBackground">
+
+        <ImageView
+            android:id="@+id/imageViewOwner"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="0.5dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHeight_percent="1"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:layout_constraintDimensionRatio="2:3"
+            tools:ignore="ContentDescription" />
+
+
+        <TextView
+            android:id="@+id/textViewName"
+            style="@style/TitleTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/repo_margin_start_horizontal"
+            android:layout_marginTop="@dimen/repo_margin_start_horizontal"
+            android:minHeight="@dimen/repo_margin_vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageViewOwner"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Repo Name" />
+
+        <TextView
+            android:id="@+id/textViewDescription"
+            style="@style/MinorTextStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/repo_margin_vertical"
+            android:lines="2"
+            android:ellipsize="end"
+            android:layout_marginTop="@dimen/repo_margin_vertical"
+            android:layout_marginEnd="@dimen/repo_margin_start_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/textViewName"
+            app:layout_constraintTop_toBottomOf="@id/textViewName"
+            tools:text="Testing description and how it looks etc etc test Testing description and how it looks etc etc"/>
+
+        <TextView
+            android:id="@+id/textViewStarsCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textAlignment="center"
+            app:drawableStartCompat="@drawable/ic_star"
+            app:layout_constraintBottom_toBottomOf="@+id/textViewOwnerName"
+            app:layout_constraintEnd_toEndOf="@id/textViewDescription"
+            app:layout_constraintTop_toTopOf="@+id/textViewOwnerName"
+            tools:text="5.1K" />
+
+        <TextView
+            android:id="@+id/textViewOwnerName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/repo_margin_start_horizontal_8dp"
+            android:ellipsize="end"
+            android:lines="1"
+            android:textColor="@color/black"
+            android:layout_marginVertical="@dimen/repo_margin_vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/textViewStarsCount"
+            app:layout_constraintStart_toStartOf="@id/textViewName"
+            app:layout_constraintTop_toBottomOf="@id/textViewDescription"
+            tools:text="Raed Zein" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
+

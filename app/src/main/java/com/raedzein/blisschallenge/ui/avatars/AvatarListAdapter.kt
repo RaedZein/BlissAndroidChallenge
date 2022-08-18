@@ -8,10 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.raedzein.blisschallenge.R
 import com.raedzein.blisschallenge.databinding.ListItemAvatarBinding
-import com.raedzein.blisschallenge.databinding.ListItemEmojiBinding
-import com.raedzein.blisschallenge.domain.model.Emoji
 import com.raedzein.blisschallenge.domain.model.GithubUser
 
 class AvatarListAdapter(private val onAvatarClick: (GithubUser) -> Unit) :
@@ -21,7 +18,7 @@ class AvatarListAdapter(private val onAvatarClick: (GithubUser) -> Unit) :
         private val DIFF_CALLBACK = object :
             DiffUtil.ItemCallback<GithubUser>() {
             override fun areItemsTheSame(oldItem: GithubUser, newItem: GithubUser): Boolean =
-                oldItem.id == newItem.id
+                oldItem.userId == newItem.userId
 
             @SuppressLint("DiffUtilEquals")
             override fun areContentsTheSame(oldItem: GithubUser, newItem: GithubUser): Boolean =

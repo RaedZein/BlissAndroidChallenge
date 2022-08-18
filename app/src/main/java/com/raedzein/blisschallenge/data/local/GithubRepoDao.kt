@@ -17,7 +17,7 @@ interface GithubRepoDao {
      * Room knows how to return a LivePagedListProvider, from which we can get a LiveData and serve
      * it back to UI via ViewModel.
      */
-    @Query("SELECT * FROM GithubRepo ORDER BY starsCount DESC")
+    @Query("SELECT * FROM GithubRepo")
     fun allGithubRepos(): PagingSource<Int, GithubRepo>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

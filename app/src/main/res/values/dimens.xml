@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="textview_drawable_padding">32dp</dimen>
+    <dimen name="general_margin_8">8dp</dimen>
+    <dimen name="search_bar_radius">8dp</dimen>
+
+    <dimen name="repo_margin_vertical">10dp</dimen>
+    <dimen name="repo_margin_start_horizontal">16dp</dimen>
+    <dimen name="repo_margin_start_horizontal_8dp">8dp</dimen>
+</resources>

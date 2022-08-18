@@ -25,6 +25,13 @@
             app:popExitAnim="@anim/fragment_close_exit"
             android:id="@+id/action_homeFragment_to_avatarListFragment"
             app:destination="@id/avatarListFragment" />
+        <action
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit"
+            android:id="@+id/action_homeFragment_to_repoListFragment"
+            app:destination="@id/repoListFragment" />
     </fragment>
 
     <fragment
@@ -36,6 +43,11 @@
         android:id="@+id/avatarListFragment"
         android:name="com.raedzein.blisschallenge.ui.avatars.AvatarListFragment"
         tools:layout="@layout/fragment_avatars"/>
+
+    <fragment
+        android:id="@+id/repoListFragment"
+        android:name="com.raedzein.blisschallenge.ui.repos.RepoListFragment"
+        tools:layout="@layout/fragment_repo_list"/>
 
 
 </navigation>
