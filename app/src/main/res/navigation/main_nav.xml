@@ -4,29 +4,69 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/listingFragment">
+    app:startDestination="@id/homeFragment">
 
     <fragment
-        android:id="@+id/listingFragment"
-        android:name="com.adyen.android.assignment.ui.list.ListFragment"
-        tools:layout="@layout/fragment_list">
-
+        android:id="@+id/homeFragment"
+        android:name="com.raedzein.blisschallenge.ui.home.HomeFragment"
+        tools:layout="@layout/fragment_home">
 
         <action
             app:enterAnim="@anim/fragment_open_enter"
             app:exitAnim="@anim/fragment_open_exit"
             app:popEnterAnim="@anim/fragment_close_enter"
             app:popExitAnim="@anim/fragment_close_exit"
-            android:id="@+id/action_listingFragment_to_detailsFragment"
-            app:destination="@id/detailsFragment" />
+            android:id="@+id/action_homeFragment_to_emojisListFragment"
+            app:destination="@id/emojisListFragment" />
+        <action
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit"
+            android:id="@+id/action_homeFragment_to_avatarListFragment"
+            app:destination="@id/avatarListFragment" />
+        <action
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit"
+            android:id="@+id/action_homeFragment_to_repoListFragment"
+            app:destination="@id/repoListFragment" />
     </fragment>
+
     <fragment
-        android:id="@+id/detailsFragment"
-        android:name="com.adyen.android.assignment.ui.details.PlaceDetailsFragment"
-        tools:layout="@layout/fragment_place_details">
-        <argument
-            android:name="place"
-            app:argType="com.adyen.android.assignment.domain.model.PlaceResult" />
+        android:id="@+id/emojisListFragment"
+        android:name="com.raedzein.blisschallenge.ui.emojis.EmojisListFragment"
+        tools:layout="@layout/fragment_emojis_list"/>
+
+    <fragment
+        android:id="@+id/avatarListFragment"
+        android:name="com.raedzein.blisschallenge.ui.avatars.AvatarListFragment"
+        tools:layout="@layout/fragment_avatars"/>
+
+    <fragment
+        android:id="@+id/repoListFragment"
+        android:name="com.raedzein.blisschallenge.ui.repos.RepoListFragment"
+        tools:layout="@layout/fragment_repo_list">
+        <action
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit"
+            android:id="@+id/action_repoListingFragment_to_repoDetailsFragment"
+            app:destination="@id/repoDetailsFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/repoDetailsFragment"
+        android:name="com.raedzein.blisschallenge.ui.details.RepoDetailsFragment"
+        tools:layout="@layout/fragment_repo_details">
+
+        <argument
+            android:name="repo"
+            app:argType="com.raedzein.blisschallenge.domain.model.GithubRepo" />
+
+    </fragment>
+
 
 </navigation>
