@@ -13,4 +13,9 @@
     <string name="home_button_avatar_list">Avatar List</string>
     <string name="home_button_repos">Google Repos</string>
 
+    <!-- Avatar strings-->
+    <string name="avatar_message_search">Please type the account\'s username you wish to fetch their avatar</string>
+    <string name="avatar_err_empty">Please enter a username</string>
+    <string name="avatar_err_search">No User found with that username</string>
+
 </resources>
