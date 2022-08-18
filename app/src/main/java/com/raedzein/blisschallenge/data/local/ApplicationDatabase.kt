@@ -5,16 +5,18 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.raedzein.blisschallenge.domain.model.Emoji
+import com.raedzein.blisschallenge.domain.model.GithubUser
 
 /**
  * The Room database that contains the GithubRepo table
  * @author Raed Zein
  * created on Thursday, 18 August, 2022
  */
-@Database(entities = [Emoji::class], version = 1)
+@Database(entities = [Emoji::class,GithubUser::class], version = 1)
 abstract class ApplicationDatabase : RoomDatabase() {
 
     abstract fun emojiDao(): EmojiDao
+    abstract fun githubUserDao(): GithubUserDao
 
     companion object {
 
