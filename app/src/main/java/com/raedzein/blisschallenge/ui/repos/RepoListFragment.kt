@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.raedzein.blisschallenge.R
@@ -72,9 +73,9 @@ class RepoListFragment : ViewBindingFragment<FragmentRepoListBinding>() {
     }
 
     private fun openDetailsPage(repo: GithubRepo) {
-//        findNavController().navigate(
-//            ListFragmentDirections
-//                .actionListingFragmentToDetailsFragment(repo.id))
+        findNavController().navigate(
+            RepoListFragmentDirections
+                .actionRepoListingFragmentToRepoDetailsFragment(repo))
     }
 
     private fun showMessageDialog(

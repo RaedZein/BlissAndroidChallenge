@@ -47,7 +47,26 @@
     <fragment
         android:id="@+id/repoListFragment"
         android:name="com.raedzein.blisschallenge.ui.repos.RepoListFragment"
-        tools:layout="@layout/fragment_repo_list"/>
+        tools:layout="@layout/fragment_repo_list">
+        <action
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit"
+            android:id="@+id/action_repoListingFragment_to_repoDetailsFragment"
+            app:destination="@id/repoDetailsFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/repoDetailsFragment"
+        android:name="com.raedzein.blisschallenge.ui.details.RepoDetailsFragment"
+        tools:layout="@layout/fragment_repo_details">
+
+        <argument
+            android:name="repo"
+            app:argType="com.raedzein.blisschallenge.domain.model.GithubRepo" />
+
+    </fragment>
 
 
 </navigation>

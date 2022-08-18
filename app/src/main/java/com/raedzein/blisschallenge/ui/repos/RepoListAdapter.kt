@@ -60,7 +60,6 @@ class RepoListAdapter(private val openRepo: (GithubRepo) -> Unit) :
 
                 Glide.with(itemView.context)
                     .load(item.owner.avatarUrl)
-                    .placeholder(R.color.teal_200)
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(binding.imageViewOwner)
                 binding.textViewOwnerName.text = item.owner.username

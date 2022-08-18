@@ -227,6 +227,6 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <include
-        android:id="@+id/bottomSheetSearchUser"
+        android:id="@+id/sheetUser"
         layout="@layout/layout_search_user"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

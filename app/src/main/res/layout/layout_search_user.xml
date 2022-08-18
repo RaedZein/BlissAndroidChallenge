@@ -10,15 +10,15 @@
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
     android:padding="16dp">
 
-    <com.raedzein.blisschallenge.ui.custom_view.CustomSearchBar
+    <include
         android:id="@+id/searchBar"
+        layout="@layout/view_custom_search_bar"
         android:layout_width="0dp"
         android:layout_height="?actionBarSize"
         android:layout_marginVertical="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <ImageView

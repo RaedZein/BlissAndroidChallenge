@@ -20,8 +20,7 @@ class RepositoriesMediator(
     state: PagingState<Int, GithubRepo>
   ): MediatorResult {
     currentPage = when (loadType) {
-      LoadType.REFRESH ->
-        getRefreshKey(state)?: 1
+      LoadType.REFRESH -> 1
 
       LoadType.PREPEND ->
         return MediatorResult.Success(endOfPaginationReached = false)

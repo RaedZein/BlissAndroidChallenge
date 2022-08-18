@@ -1,31 +1,30 @@
 package com.raedzein.blisschallenge.ui.custom_view
 
-import android.content.Context
-import android.util.AttributeSet
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.ImageView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.textfield.TextInputEditText
 import com.raedzein.blisschallenge.R
+import com.raedzein.blisschallenge.databinding.ViewCustomSearchBarBinding
 import com.raedzein.blisschallenge.utils.KeyboardUtils
 
-class CustomSearchBar @JvmOverloads constructor(
-    context: Context, attrs: AttributeSet? = null
-) : ConstraintLayout(context, attrs) {
+class CustomSearchBarHandler {
 
-    val searchEditText: TextInputEditText
-    private val clearImageView: ImageView
-    private val buttonSearch: Button
+    lateinit var searchEditText: TextInputEditText
+    private lateinit var clearImageView: ImageView
+    private lateinit var buttonSearch: Button
     private var searchBarListener : SearchBarListener? = null
-    init {
-        inflate(context, R.layout.view_custom_search_bar, this)
-        searchEditText = findViewById(R.id.editTextSearch)
-        clearImageView = findViewById(R.id.imageViewClear)
-        buttonSearch = findViewById(R.id.buttonSearch)
+
+    fun setUpViews(
+        binding: ViewCustomSearchBarBinding,
+        searchBarListener: SearchBarListener) {
+
+        this.searchEditText = binding.editTextSearch
+        this.clearImageView = binding.imageViewClear
+        this.buttonSearch = binding.buttonSearch
+        this.searchBarListener = searchBarListener
 
         searchEditText.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
@@ -61,7 +60,7 @@ class CustomSearchBar @JvmOverloads constructor(
 
     private fun validateSearch() {
         if(searchEditText.text.isNullOrEmpty()){
-            searchEditText.error = context.getString(R.string.avatar_err_empty)
+            searchEditText.error = searchEditText.context.getString(R.string.avatar_err_empty)
             return
         }
         searchEditText.error = null
@@ -71,9 +70,6 @@ class CustomSearchBar @JvmOverloads constructor(
         searchBarListener?.onSearchClicked()
     }
 
-    fun setSearchListener(searchBarListener: SearchBarListener) {
-        this.searchBarListener = searchBarListener
-    }
 
     fun setQueryText(queryText: String) {
         searchEditText.setText(queryText)

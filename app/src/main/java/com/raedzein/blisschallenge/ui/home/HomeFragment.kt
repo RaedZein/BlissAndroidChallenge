@@ -1,9 +1,7 @@
 package com.raedzein.blisschallenge.ui.home
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
@@ -18,30 +16,26 @@ import com.raedzein.blisschallenge.ui.base.ViewLoaderState
 import com.raedzein.blisschallenge.utils.showMessageDialog
 import dagger.hilt.android.AndroidEntryPoint
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetBehavior.BottomSheetCallback
-import com.raedzein.blisschallenge.ui.custom_view.CustomSearchBar
-import com.raedzein.blisschallenge.utils.KeyboardUtils
+import com.raedzein.blisschallenge.ui.custom_view.CustomSearchBarHandler
 import androidx.activity.OnBackPressedCallback
 import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
 
 
 @AndroidEntryPoint
-class HomeFragment : ViewBindingFragment<FragmentHomeBinding>(),CustomSearchBar.SearchBarListener {
+class HomeFragment : ViewBindingFragment<FragmentHomeBinding>(),CustomSearchBarHandler.SearchBarListener {
 
     private val homeViewModel by viewModels<HomeViewModel>()
 
     override fun getBinding(layoutInflater: LayoutInflater, container: ViewGroup?) =
         FragmentHomeBinding.inflate(layoutInflater, container, false)
 
-    private val sheetView by lazy {
-        binding.bottomSheetSearchUser
-    }
+    private val searchBarHandler = CustomSearchBarHandler()
 
-    private val bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout> by lazy{
-        BottomSheetBehavior.from(sheetView.constraintLayoutSearch)
-    }
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
+
     override fun setUpViews() {
-        setUpLiveDataObservers()
+
+        bottomSheetBehavior = BottomSheetBehavior.from(binding.sheetUser.constraintLayoutSearch)
 
         binding.buttonRandomEmoji.setOnClickListener {
             homeViewModel.getRandomEmoji()
@@ -61,8 +55,8 @@ class HomeFragment : ViewBindingFragment<FragmentHomeBinding>(),CustomSearchBar.
                 HomeFragmentDirections.actionHomeFragmentToRepoListFragment()
             )
         }
-        sheetView.searchBar.setSearchListener(this)
-        sheetView.searchBar.setQueryText(homeViewModel.getUserNameText())
+        searchBarHandler.setUpViews(binding.sheetUser.searchBar,this)
+        searchBarHandler.setQueryText(homeViewModel.getUserNameText())
 
         requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,
             object : OnBackPressedCallback(true) {
@@ -73,6 +67,8 @@ class HomeFragment : ViewBindingFragment<FragmentHomeBinding>(),CustomSearchBar.
                         activity?.finish()
                 }
             })
+        setUpLiveDataObservers()
+
 
     }
 
@@ -97,7 +93,6 @@ class HomeFragment : ViewBindingFragment<FragmentHomeBinding>(),CustomSearchBar.
 
                     Glide.with(requireContext())
                         .load(it.result.url)
-                        .placeholder(R.color.teal_200)
                         .transition(DrawableTransitionOptions.withCrossFade())
                         .into(binding.imageViewEmoji)
                     binding.buttonRandomEmoji.setText(R.string.home_button_random_emoji)
@@ -117,42 +112,42 @@ class HomeFragment : ViewBindingFragment<FragmentHomeBinding>(),CustomSearchBar.
         homeViewModel.githubUserLiveData.observe(viewLifecycleOwner){
             when(it){
                 ViewLoaderState.Init -> {
-                    sheetView.progressBarSearchUser.isVisible = false
-                    sheetView.searchBar.enable(true)
-                    sheetView.textViewMessage.isVisible = true
-                    sheetView.textViewNoUserFoundMessage.isVisible = false
-                    sheetView.imageViewGithubUser.isInvisible = true
-                    sheetView.textViewGithubUsername.isInvisible = true
+                    binding.sheetUser.progressBarSearchUser.isVisible = false
+                    searchBarHandler.enable(true)
+                    binding.sheetUser.textViewMessage.isVisible = true
+                    binding.sheetUser.textViewNoUserFoundMessage.isVisible = false
+                    binding.sheetUser.imageViewGithubUser.isInvisible = true
+                    binding.sheetUser.textViewGithubUsername.isInvisible = true
                 }
                 ViewLoaderState.Loading -> {
-                    sheetView.progressBarSearchUser.isVisible = true
-                    sheetView.searchBar.enable(false)
-                    sheetView.textViewMessage.isVisible = false
-                    sheetView.textViewNoUserFoundMessage.isVisible = false
-                    sheetView.imageViewGithubUser.isInvisible = true
-                    sheetView.textViewGithubUsername.isInvisible = true
+                    binding.sheetUser.progressBarSearchUser.isVisible = true
+                    searchBarHandler.enable(false)
+                    binding.sheetUser.textViewMessage.isVisible = false
+                    binding.sheetUser.textViewNoUserFoundMessage.isVisible = false
+                    binding.sheetUser.imageViewGithubUser.isInvisible = true
+                    binding.sheetUser.textViewGithubUsername.isInvisible = true
                 }
                 is ViewLoaderState.Loaded -> {
-                    sheetView.progressBarSearchUser.isVisible = false
-                    sheetView.searchBar.enable(true)
-                    sheetView.textViewMessage.isVisible = false
-                    sheetView.textViewNoUserFoundMessage.isVisible = false
-                    sheetView.imageViewGithubUser.isVisible = true
+                    binding.sheetUser.progressBarSearchUser.isVisible = false
+                    searchBarHandler.enable(true)
+                    binding.sheetUser.textViewMessage.isVisible = false
+                    binding.sheetUser.textViewNoUserFoundMessage.isVisible = false
+                    binding.sheetUser.imageViewGithubUser.isVisible = true
                     Glide.with(requireContext())
                         .load(it.result.avatarUrl)
                         .transition(DrawableTransitionOptions.withCrossFade())
-                        .into(sheetView.imageViewGithubUser)
-                    sheetView.textViewGithubUsername.isVisible = true
+                        .into(binding.sheetUser.imageViewGithubUser)
+                    binding.sheetUser.textViewGithubUsername.isVisible = true
 
-                    sheetView.textViewGithubUsername.text = it.result.username
+                    binding.sheetUser.textViewGithubUsername.text = it.result.username
                 }
                 is ViewLoaderState.Failed -> {
-                    sheetView.progressBarSearchUser.isVisible = false
-                    sheetView.searchBar.enable(true)
-                    sheetView.textViewMessage.isVisible = false
-                    sheetView.textViewNoUserFoundMessage.isVisible = true
-                    sheetView.imageViewGithubUser.isInvisible = true
-                    sheetView.textViewGithubUsername.isInvisible = true
+                    binding.sheetUser.progressBarSearchUser.isVisible = false
+                    searchBarHandler.enable(true)
+                    binding.sheetUser.textViewMessage.isVisible = false
+                    binding.sheetUser.textViewNoUserFoundMessage.isVisible = true
+                    binding.sheetUser.imageViewGithubUser.isInvisible = true
+                    binding.sheetUser.textViewGithubUsername.isInvisible = true
                 }
             }
         }
@@ -168,14 +163,14 @@ class HomeFragment : ViewBindingFragment<FragmentHomeBinding>(),CustomSearchBar.
 
     override fun onSearchUnFocus() {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
-        sheetView.searchBar.searchEditText.clearFocus()
+        searchBarHandler.searchEditText.clearFocus()
 
-        sheetView.progressBarSearchUser.isVisible = false
-        sheetView.searchBar.enable(true)
-        sheetView.textViewMessage.isVisible = true
-        sheetView.textViewNoUserFoundMessage.isVisible = false
-        sheetView.imageViewGithubUser.isInvisible = true
-        sheetView.textViewGithubUsername.isInvisible = true
+        binding.sheetUser.progressBarSearchUser.isVisible = false
+        searchBarHandler.enable(true)
+        binding.sheetUser.textViewMessage.isVisible = true
+        binding.sheetUser.textViewNoUserFoundMessage.isVisible = false
+        binding.sheetUser.imageViewGithubUser.isInvisible = true
+        binding.sheetUser.textViewGithubUsername.isInvisible = true
     }
 
 

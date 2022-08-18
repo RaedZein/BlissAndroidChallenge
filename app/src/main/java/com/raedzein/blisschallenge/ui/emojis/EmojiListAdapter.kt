@@ -53,7 +53,6 @@ class EmojiListAdapter(private val onEmojiClick: (Emoji) -> Unit) :
             place = item
             Glide.with(itemView.context)
                 .load(item.url)
-                .placeholder(R.color.teal_200)
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .into(binding.imageViewEmoji)
         }
