@@ -12,13 +12,13 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/image_view_emoji"
+            android:id="@+id/imageViewEmoji"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="4dp"
             app:layout_constraintWidth_percent="0.35"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintBottom_toTopOf="@+id/cardViewCategoryEmojis"
+            app:layout_constraintBottom_toTopOf="@+id/cardViewEmojis"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -31,10 +31,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/home_button_random_emoji"
-            app:layout_constraintBottom_toTopOf="@+id/cardViewCategoryEmojis"
+            app:layout_constraintBottom_toTopOf="@+id/cardViewEmojis"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_view_emoji"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewEmoji"
             app:layout_constraintVertical_bias="0.0" />
 
 
@@ -159,7 +159,7 @@
             android:orientation="horizontal"
             app:layout_constraintGuide_percent="0.6" />
         <androidx.cardview.widget.CardView
-            android:id="@+id/cardViewCategoryEmojis"
+            android:id="@+id/cardViewEmojis"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="6dp"
@@ -219,10 +219,10 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:padding="35dp"
-            app:layout_constraintBottom_toBottomOf="@+id/image_view_emoji"
-            app:layout_constraintEnd_toEndOf="@+id/image_view_emoji"
-            app:layout_constraintStart_toStartOf="@+id/image_view_emoji"
-            app:layout_constraintTop_toTopOf="@+id/image_view_emoji" />
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewEmoji"
+            app:layout_constraintEnd_toEndOf="@+id/imageViewEmoji"
+            app:layout_constraintStart_toStartOf="@+id/imageViewEmoji"
+            app:layout_constraintTop_toTopOf="@+id/imageViewEmoji" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

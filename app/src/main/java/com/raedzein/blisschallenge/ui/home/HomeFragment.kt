@@ -46,9 +46,14 @@ class HomeFragment : ViewBindingFragment<FragmentHomeBinding>(),CustomSearchBar.
         binding.buttonRandomEmoji.setOnClickListener {
             homeViewModel.getRandomEmoji()
         }
-        binding.cardViewCategoryEmojis.setOnClickListener {
+        binding.cardViewEmojis.setOnClickListener {
             findNavController().navigate(
                 HomeFragmentDirections.actionHomeFragmentToEmojisListFragment()
+            )
+        }
+        binding.cardViewAvatars.setOnClickListener {
+            findNavController().navigate(
+                HomeFragmentDirections.actionHomeFragmentToAvatarListFragment()
             )
         }
         sheetView.searchBar.setSearchListener(this)
