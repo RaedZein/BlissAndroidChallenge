@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.raedzein.blisschallenge.R
@@ -28,6 +29,10 @@ class HomeFragment : ViewBindingFragment<FragmentHomeBinding>() {
 
         binding.buttonRandomEmoji.setOnClickListener {
             homeViewModel.getRandomEmoji()
+        }
+        binding.cardViewCategoryEmojis.setOnClickListener {
+            findNavController().navigate(
+                HomeFragmentDirections.actionHomeFragmentToEmojisListFragment())
         }
     }
 

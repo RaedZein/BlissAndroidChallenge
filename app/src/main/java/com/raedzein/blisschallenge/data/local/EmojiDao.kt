@@ -27,4 +27,7 @@ interface EmojiDao {
 
     @Query("DELETE FROM Emoji")
     suspend fun deleteAll()
+
+    @Query("DELETE FROM Emoji where name = :name")
+    suspend fun delete(name: String)
 }

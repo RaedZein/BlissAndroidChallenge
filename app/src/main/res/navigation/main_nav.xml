@@ -11,7 +11,19 @@
         android:name="com.raedzein.blisschallenge.ui.home.HomeFragment"
         tools:layout="@layout/fragment_home">
 
+        <action
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/fragment_close_enter"
+            app:popExitAnim="@anim/fragment_close_exit"
+            android:id="@+id/action_homeFragment_to_emojisListFragment"
+            app:destination="@id/emojisListFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/emojisListFragment"
+        android:name="com.raedzein.blisschallenge.ui.emojis.EmojisListFragment"
+        tools:layout="@layout/fragment_emojis_list"/>
 
 
 </navigation>
